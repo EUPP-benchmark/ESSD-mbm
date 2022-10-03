@@ -1,0 +1,3 @@
+[submodule "pythie"]
+	path = pythie
+	url = https://github.com/Climdyn/pythie.git
