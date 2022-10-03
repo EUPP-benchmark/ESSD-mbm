@@ -13,6 +13,7 @@ import datetime
 print('Starting training at:')
 print(datetime.datetime.now())
 start_time = time.time()
+print('\n')
 
 
 # Setting the path
@@ -38,13 +39,6 @@ import numpy as np
 
 
 import xarray as xr
-
-
-# In[ ]:
-
-
-from matplotlib import rc
-rc('font',**{'family':'serif','sans-serif':['Times'],'size':16})
 
 
 # Importing internal modules
@@ -129,7 +123,9 @@ for year in season_index:
         postprocessor.train(data_t2_obs, data_t2_fcs, ntrial=1)
         
         postprocessors[year][season] = postprocessor
-        print('Training of season finished')
+        print('Training of season finished at:')
+        print(datetime.datetime.now())
+        print('\n')
         
 
 
@@ -138,7 +134,7 @@ for year in season_index:
 # In[ ]:
 
 
-with open('postprocessors.pickle', 'wb') as fo:
+with open(config.path_to_postprocessors + 'postprocessors.pickle', 'wb') as fo:
     pickle.dump(postprocessors, fo)
 
 
