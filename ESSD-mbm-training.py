@@ -184,6 +184,6 @@ with open(config.path_to_postprocessors + 'postprocessors.pickle', 'wb') as fo:
 print('Training of all season finished at:')
 print(datetime.datetime.now())
 end_time = time.time()
-print('Time ellapsed:')
-print(str((end_time - start_time) / 60) + 'minutes ellapsed.')
+print('Time elapsed:')
+print(str((end_time - start_time) / 60) + ' minutes elapsed.')
 

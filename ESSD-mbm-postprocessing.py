@@ -274,6 +274,6 @@ corrected_fcs_data.to_netcdf(file_name)
 print('Postprocessing finished at:')
 print(datetime.datetime.now())
 end_time = time.time()
-print('Time ellapsed:')
-print(str((end_time - start_time) / 60) + 'minutes ellapsed.')
+print('Time elapsed:')
+print(str((end_time - start_time) / 60) + ' minutes elapsed.')
 
