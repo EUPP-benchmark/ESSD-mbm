@@ -90,7 +90,7 @@ season_index[2018] = {'JFM': slice('2018-01-01', '2018-03-31'),
                      }
 
 
-# ## Looping the training on the season
+# ## Looping on the seasons and training the Pythie postprocessor objects
 
 # In[ ]:
 
@@ -101,7 +101,10 @@ postprocessors[2018] = dict()
 
 for year in season_index:
     for season in season_index[year]:
-        print('Treating season '+season+str(year)+' ...')
+        print('Training of season '+season+str(year)+' started at:')
+        print(datetime.datetime.now())
+        print('...')
+        
         # selecting the season's data
         rfcs = rfcs_data.sel(time=season_index[year][season])
         robs = robs_data.sel(time=season_index[year][season])
@@ -182,5 +185,5 @@ print('Training of all season finished at:')
 print(datetime.datetime.now())
 end_time = time.time()
 print('Time ellapsed:')
-print(str(end_time / 60) + 'minutes ellapsed.')
+print(str((end_time - start_time) / 60) + 'minutes ellapsed.')
 
