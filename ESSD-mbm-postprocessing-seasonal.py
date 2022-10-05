@@ -225,8 +225,9 @@ attrs = dict()
 attrs['tier'] = '1'  
 attrs['experiment'] = 'ESSD-benchmark'
 attrs['institution'] = 'RMIB'
-attrs['model'] = 'Pythie-MBM-AbsCRPSmin-seasonal'
-attrs['model_version'] = 'commit 21a29a9dc91f1bcd6b4f75caf0d4dbae4a375303'
+attrs['model'] = 'Pythie-MBM-AbsCRPSmin-commit21a29a9'
+attrs['version'] = 'seasonal-v1.0'
+attrs['output'] = 'members'
 
 corrected_fcs_data.attrs.update(attrs)
 
@@ -245,7 +246,7 @@ corrected_fcs_data = corrected_fcs_data.transpose('station_id', 'time', 'step', 
 
 
 # filename is "<tier>_<experiment>_<institution>_<model>_<version>.nc"
-del attrs['model_version']  # not needed in the filename
+del attrs['output']  # not needed in the filename
 file_info = '_'.join(attrs.values())
 file_name = config.path_to_output + file_info + '.nc'
 print('Saving the result to ' + file_name + ' ...')
