@@ -1,4 +1,4 @@
-name: ESSD-MBM
+name: ESSD-mbm
 channels:
   - conda-forge
   - defaults
