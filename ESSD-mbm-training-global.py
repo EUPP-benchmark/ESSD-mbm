@@ -71,7 +71,7 @@ rfcs_data = rfcs_data.transpose('time', 'year', 'number', 'step', 'station_id')
 robs_data = robs_data.transpose('time', 'year', 'step', 'station_id')
 
 
-# ## Looping on the seasons and training the Pythie postprocessor objects
+# ## Training the Pythie postprocessor objects
 
 # In[ ]:
 
