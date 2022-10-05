@@ -71,7 +71,26 @@ fcs_data = fcs_data.transpose('time', 'number', 'step', 'station_id')
 obs_data = obs_data.transpose('time', 'step', 'station_id')
 
 
-# ## Postprocessing
+# ## Setting the season indices
+
+# In[ ]:
+
+
+season_index = dict()
+season_index[2017] = {'JFM': slice('2017-01-01', '2017-03-31'),
+                      'AMJ': slice('2017-04-01', '2017-06-30'),
+                      'JAS': slice('2017-07-01', '2017-09-30'),
+                      'OND': slice('2017-10-01', '2017-12-31')
+                     }
+
+season_index[2018] = {'JFM': slice('2018-01-01', '2018-03-31'),
+                      'AMJ': slice('2018-04-01', '2018-06-30'),
+                      'JAS': slice('2018-07-01', '2018-09-30'),
+                      'OND': slice('2018-10-01', '2018-12-31')
+                     }
+
+
+# ## Looping on the seasons and postprocessing
 
 # In[ ]:
 
@@ -83,20 +102,53 @@ with open('postprocessor-global.pickle', 'rb') as fo:
 # In[ ]:
 
 
-# converting to numpy arrays in °C
-fcs = fcs_data.to_numpy() - 273.15
-obs = obs_data.to_numpy() - 273.15
+# Postprocessing every season with the same global postprocessor !
+postprocessed_forecasts = dict()
+postprocessed_forecasts[2017] = dict()
+postprocessed_forecasts[2018] = dict()
 
-# arranging all the forecasts to fit the Pythie data model
-fcs = fcs.reshape((1, fcs.shape[0], fcs.shape[1], 1, fcs.shape[2], fcs.shape[3], 1))
-obs = obs.reshape((1, obs.shape[0], 1, 1, obs.shape[1], obs.shape[2], 1))
 
-# creating the pythie data
-data_t2_fcs = Data(fcs)
-data_t2_obs = Data(obs)
+for year in season_index:
+    for season in season_index[year]:
+        print('Postprocessing season '+season+str(year)+' started at:')
+        print(datetime.datetime.now())
+        print('...')
+        # selecting the season's data
+        fcs = fcs_data.sel(time=season_index[year][season])
+        obs = obs_data.sel(time=season_index[year][season])
+        
+        # converting to numpy arrays in °C
+        fcs = fcs.to_numpy() - 273.15
+        obs = obs.to_numpy() - 273.15
+        
+        # arranging all the forecasts to fit the Pythie data model
+        fcs = fcs.reshape((1, fcs.shape[0], fcs.shape[1], 1, fcs.shape[2], fcs.shape[3], 1))
+        obs = obs.reshape((1, obs.shape[0], 1, 1, obs.shape[1], obs.shape[2], 1))
+        
+        # creating the pythie data
+        data_t2_fcs = Data(fcs)
+        data_t2_obs = Data(obs)
+        
+        # postprocessing and saving the result
+        corr_data_t2_fcs = postprocessor(data_t2_fcs)
+        postprocessed_forecasts[year][season] = corr_data_t2_fcs
+        
+        print('Postprocessing of season finished at:')
+        print(datetime.datetime.now())
+        print('\n')
+        
 
-# postprocessing and saving the result
-corr_data_t2_fcs = postprocessor(data_t2_fcs)
+
+# Creating a final data object
+
+# In[ ]:
+
+
+corr_data_t2_fcs_total = Data()
+
+for year in season_index:
+    for season in season_index[year]:
+        corr_data_t2_fcs_total.append_realizations(postprocessed_forecasts[year][season])
 
 
 # ## Plotting the results of a given season
