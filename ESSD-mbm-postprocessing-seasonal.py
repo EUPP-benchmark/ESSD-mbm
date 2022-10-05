@@ -95,7 +95,7 @@ season_index[2018] = {'JFM': slice('2018-01-01', '2018-03-31'),
 # In[ ]:
 
 
-with open('postprocessors.pickle', 'rb') as fo:
+with open('postprocessors-seasonal.pickle', 'rb') as fo:
     postprocessors = pickle.load(fo)
 
 
@@ -225,7 +225,7 @@ attrs = dict()
 attrs['tier'] = '1'  
 attrs['experiment'] = 'ESSD-benchmark'
 attrs['institution'] = 'RMIB'
-attrs['model'] = 'Pythie-MBM-AbsCRPSmin'
+attrs['model'] = 'Pythie-MBM-AbsCRPSmin-seasonal'
 attrs['model_version'] = 'commit 21a29a9dc91f1bcd6b4f75caf0d4dbae4a375303'
 
 corrected_fcs_data.attrs.update(attrs)

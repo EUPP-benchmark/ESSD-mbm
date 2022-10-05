@@ -137,7 +137,7 @@ for year in season_index:
 # In[ ]:
 
 
-with open(config.path_to_postprocessors + 'postprocessors.pickle', 'wb') as fo:
+with open(config.path_to_postprocessors + 'postprocessors-seasonal.pickle', 'wb') as fo:
     pickle.dump(postprocessors, fo)
 
 
