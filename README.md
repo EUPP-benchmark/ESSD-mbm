@@ -80,3 +80,10 @@ Once you have obtained the output of the scripts above, the notebooks `ESSD-mbm-
     jupyter-notebook
     
 and load them.
+
+## Performance indication
+
+On a computer with 96 Intel Xeon Gold 6126 CPU @ 2.60GHz with 96 Gb of RAM:
+
+* Training takes roughly 20 minutes for both the global and seasonal model.
+* Postprocessing the test dataset takes between 2 and 3 minutes for both the global and seasonal model.
