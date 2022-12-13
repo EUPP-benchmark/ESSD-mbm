@@ -72,3 +72,9 @@ The output of the postprocessing is then available in a NetCDF file.
 
 
 ## Testing the output
+
+Once you have obtained the output of the scripts above, the notebooks `ESSD-mbm-test-global.ipynb` and `ESSD-mbm-test-seasonal.ipynb` are available to run some simple tests and compute the [CRPS scores](https://www.lokad.com/continuous-ranked-probability-score) of the postprocessed forecasts. To run them, simply start a Jupyter Notebook server:
+
+    jupyter-notebook
+    
+and load them.
