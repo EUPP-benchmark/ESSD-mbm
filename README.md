@@ -1,6 +1,12 @@
 # ESSD-mbm
 
-Member-By-Member (MBM) scripts for the ESSD benchmark
+Member-By-Member (MBM) scripts for the ESSD benchmark. Provide the MBM output file (see the method's details below).
+
+This code is provided as supplementary material with:
+
+* ...: The EUPPBench postprocessing benchmark dataset v1.0, ...
+
+**Please cite this article if you use (a part of) this code for a publication.**
 
 ## Installation
 
