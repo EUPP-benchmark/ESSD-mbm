@@ -28,7 +28,9 @@ And you are ready to use the notebooks or run the python scripts.
 
 ## Data
 
-The data files of the ESSD benchmark must be available somewhere, and indicated in the variable `path_to_data` of the `config.py` module. In this file, the path to the postprocessors files and to where the output can be written may also be indicated.
+First, if you do not have it, get the ESSD benchmark dataset using [the download script](https://github.com/EUPP-benchmark/ESSD-benchmark-datasets). This will fetch the dataset into NetCDF files on your disk.
+
+Then, for the present scripts, these NetCDF files of the ESSD benchmark must be available somewhere, and indicated in the variable `path_to_data` of the `config.py` module. In this file, the path to the postprocessors files (see below) and to where the output can be written may also be indicated.
 
 ## Details on the method and usage
 
