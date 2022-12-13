@@ -46,14 +46,29 @@ Two experiments are here proposed:
 > **Remark:**
 > Only the results of the global experiment were used for the ESSD benchmark.
 
+### The global experiment
+
 To run the global experiment (assuming you have downloaded the data), one simply has to run
 
-    python ...
+    python ESSD-mbm-training-global.py
     
-to train the [Pythie postprocessors](https://pythie.readthedocs.io/en/latest/files/postprocessors/MBM.html) which are then stored in pickle files. These postprocessors will then be used by the script `...` to postprocessed the test dataset:
+to train a unique [Pythie postprocessor](https://pythie.readthedocs.io/en/latest/files/postprocessors/MBM.html) which is then then stored in a pickle file `postprocessor-global.pickle`. This postprocessor will then be used by the script `ESSD-mbm-postprocessing-global.py` to postprocessed the test dataset:
 
-    python ...
+    python ESSD-mbm-postprocessing-global.py
     
-The output of the postprocessing is then available in NetCDF files.
+The output of the postprocessing is then available in a NetCDF file.
+
+### The seasonal experiment
+
+To run the seasonal experiment (assuming you have downloaded the data), one simply has to run
+
+    python ESSD-mbm-training-seasonal.py
+    
+to train a [Pythie postprocessor](https://pythie.readthedocs.io/en/latest/files/postprocessors/MBM.html) for each season, and which are then stored in a pickle file `postprocessor-seasonal.pickle`. These postprocessors will then be used by the script `ESSD-mbm-postprocessing-seasonal.py` to postprocessed the test dataset:
+
+    python ESSD-mbm-postprocessing-seasonal.py
+    
+The output of the postprocessing is then available in a NetCDF file.
+
 
 ## Testing the output
