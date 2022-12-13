@@ -34,7 +34,7 @@ The data files of the ESSD benchmark must be available somewhere, and indicated 
 
 The Member-By-Member postprocessing calibrates the ensemble forecasts by first correcting the systematic biases in the ensemble mean with a MOS technique (basically a linear regression) and subsequently rescaling the ensemble members around the corrected ensemble mean (see [Van Schaeybroeck & Vannitsem, 2015](https://doi.org/10.1002/qj.2397)). This procedure is performed in one step by finding the coefficients $\alpha$, $\beta$ and $\gamma$ in the formula
 
-$$T^C_m (t) = \alpha (t) + \beta (t) \, \mu^{\rm ens} (t) + \gamma (t) \, \bar{T}^{\rm ens}_m (t)$$
+$$T^C_m (t) = \alpha (t) + \beta (t) \\, \mu^{\rm ens} (t) + \gamma (t) \\, \bar{T}^{\rm ens}_m (t)$$
 
 which optimize the CRPS score ([Gneiting &Raftery, 2007](https://doi.org/10.1198/016214506000001437)), for each station and for each lead time $t$. The quantity $\mu^{\rm ens} (t)$ in the equation above is the ensemble mean, and $\bar{T}^{\rm ens}_m (t) = T^{\rm ens}_m (t) - \mu^{\rm ens (t)}$ is the deviation of the member $m$ from the ensemble mean. The results were obtained with the [Pythie package](https://github.com/Climdyn/pythie). In particular, optimization of the CRPS was done with the [Nelder-Mead method](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-neldermead.html?highlight=nelder), and using only one round of minimization. More details on the code and algorithms can be obtained in the [Pythie documentation](https://pythie.readthedocs.io).
 
