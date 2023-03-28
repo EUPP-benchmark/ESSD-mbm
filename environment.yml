@@ -9,3 +9,5 @@ dependencies:
   - xarray
   - matplotlib
   - jupyter
+  - netcdf4
+  - h5netcdf
